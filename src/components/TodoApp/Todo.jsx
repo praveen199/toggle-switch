@@ -39,6 +39,10 @@ export const Todo = () => {
     setTask(updateTask);
   };
 
+  const handleClearData = () => {
+    setTask([]);
+  }
+
   return (
     <>
       {/* <section className="todo-container"> */}
@@ -82,6 +86,8 @@ export const Todo = () => {
             </li>
           ))}
         </ul>
+      </section>
+      <section className="clean-btn" onClick={handleClearData}>Clear All
       </section>
       {/* </section> */}
     </>
