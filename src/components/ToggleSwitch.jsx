@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { IoIosSwitch } from "react-icons/io";
 import "./ToggleSwitch.css";
 
 const ToggleSwitch = () => {
@@ -10,15 +11,20 @@ const ToggleSwitch = () => {
     setIsOn(!isOn);
   };
   return (
-    <div
-      className="toggle-switch"
-      style={toggleBGColor}
-      onClick={handleOnSwitch}
-    >
-      <div className={`switch ${checkIsOn}`}>
-        <span className="switch-state"> {checkIsOn}</span>
+    <>
+      <h1 style={{ color: "#000", textAlign: "center" }}>
+          <IoIosSwitch style={{ color: "red", textAlign: "center" }} />
+      </h1>
+      <div
+        className="toggle-switch"
+        style={toggleBGColor}
+        onClick={handleOnSwitch}
+      >
+        <div className={`switch ${checkIsOn}`}>
+          <span className="switch-state"> {checkIsOn}</span>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
