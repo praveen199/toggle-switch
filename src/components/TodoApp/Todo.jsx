@@ -4,7 +4,7 @@ import "./Todo.css";
 
 export const Todo = () => {
   const [inputValue, setInputValue] = useState("");
-  const [task, setTak] = useState([]);
+  const [task, setTask] = useState([]);
   const [dateTime, setDataTime] = useState("");
 
   const handleInputChange = (value) => {
@@ -18,7 +18,7 @@ export const Todo = () => {
       setInputValue("");
       return;
     }
-    setTak((prevTask) => [...prevTask, inputValue]);
+    setTask((prevTask) => [...prevTask, inputValue]);
     setInputValue("");
   };
 
@@ -29,8 +29,15 @@ export const Todo = () => {
       const formattedTime = now.toLocaleTimeString();
       setDataTime(`${formattedDate} - ${formattedTime}`);
     }, 1000);
-    return () => clearInterval(interval)
+    return () => clearInterval(interval);
   }, []);
+
+  const handleToDelete = (value) => {
+    console.log(task);
+    //console.log(event)
+    const updateTask = task.filter((currentTask) => currentTask !== value);
+    setTask(updateTask);
+  };
 
   return (
     <>
@@ -61,15 +68,18 @@ export const Todo = () => {
       <section className="myUnorderedList">
         <ul>
           {task.map((item, index) => (
-              <li key={index}>
-                <span>{item}</span>
-                <button className="check-btn">
-                  <MdCheck />
-                </button>
-                <button className="delete-btn">
-                  <MdDeleteForever />
-                </button>
-              </li>
+            <li key={index}>
+              <span>{item}</span>
+              <button className="check-btn">
+                <MdCheck />
+              </button>
+              <button
+                className="delete-btn"
+                onClick={() => handleToDelete(item)}
+              >
+                <MdDeleteForever />
+              </button>
+            </li>
           ))}
         </ul>
       </section>
