@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { IoIosSwitch } from "react-icons/io";
 import "./ToggleSwitch.css";
+import { IoIosSwitch } from "react-icons/io";
 
 const ToggleSwitch = () => {
   const [isOn, setIsOn] = useState(false);
